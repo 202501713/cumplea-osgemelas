@@ -9,3 +9,8 @@ SUBIR A GITHUB:
 1. Descomprime el ZIP.
 2. Sube TODOS los archivos de la carpeta al repositorio.
 3. Reemplaza los anteriores y haz Commit changes.
+
+
+VERSIÓN 6
+- Se agregó segundo número de confirmación: +504 3159-8269
+- El mensaje de confirmación se cambió para invitación personal de 1 persona.
