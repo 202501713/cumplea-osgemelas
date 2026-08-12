@@ -1,0 +1,11 @@
+VERSIÓN 5
+Cambios:
+- Fondo floral más visible.
+- Canción 'Girls Just Want to Have Fun' de Cyndi Lauper integrada mediante el reproductor oficial de YouTube.
+- La música se inicia con un toque dentro de la misma invitación (los navegadores bloquean audio automático con sonido sin interacción).
+- Mantiene todas las fotos en la raíz para evitar problemas de rutas en GitHub Pages.
+
+SUBIR A GITHUB:
+1. Descomprime el ZIP.
+2. Sube TODOS los archivos de la carpeta al repositorio.
+3. Reemplaza los anteriores y haz Commit changes.
