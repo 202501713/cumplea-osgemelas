@@ -14,3 +14,18 @@ SUBIR A GITHUB:
 VERSIÓN 6
 - Se agregó segundo número de confirmación: +504 3159-8269
 - El mensaje de confirmación se cambió para invitación personal de 1 persona.
+
+
+VERSIÓN 7
+- Se eliminó cualquier referencia a regalos.
+- Dress code actualizado a Cocktail casual.
+- Texto actualizado a estampados florales elegantes.
+- Confirmación ajustada para invitación personal e individual.
+
+
+VERSIÓN 8
+- Se cambió el encabezado de confirmación por: Acompáñanos a vivir este momento tan especial.
+
+
+VERSIÓN 9
+- Se agregaron etiquetas Open Graph y Twitter para que al compartir el link se muestre la foto principal como vista previa.
