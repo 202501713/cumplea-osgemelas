@@ -16,9 +16,12 @@ function updateCountdown(){
   document.getElementById('minutes').textContent = String(m).padStart(2,'0');
   document.getElementById('seconds').textContent = String(s).padStart(2,'0');
 }
-updateCountdown(); setInterval(updateCountdown,1000);
+updateCountdown();
+setInterval(updateCountdown,1000);
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
 },{threshold:.13});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));

@@ -1,13 +1,20 @@
-# Invitación 50 años — Ingrid & Gloria Chávez
+# Invitación 50 años — Ingrid & Gloria Chávez (v3)
 
-Sitio estático listo para publicar con GitHub Pages.
+Versión actualizada con:
+- fondo floral suave
+- acceso a Google Maps
+- botón para la canción “Celebration” de Kool & The Gang
+- galería de fotos
+- confirmación por WhatsApp
 
-## Publicar en GitHub Pages
-1. Crea un repositorio nuevo en GitHub, por ejemplo `invitacion-ingrid-gloria`.
-2. Sube todo el contenido de esta carpeta manteniendo la carpeta `assets`.
-3. En el repositorio ve a **Settings → Pages**.
-4. En **Build and deployment**, elige **Deploy from a branch**.
-5. Selecciona la rama `main` y la carpeta `/ (root)`.
-6. Guarda. GitHub mostrará la URL pública del sitio en unos minutos.
-
-El botón de confirmación abre WhatsApp al número +504 8794-0541 con un mensaje prellenado.
+## Cómo subir a GitHub Pages
+1. Descomprime este ZIP.
+2. Sube **todo el contenido** de la carpeta al repositorio:
+   - `index.html`
+   - `styles.css`
+   - `script.js`
+   - carpeta `assets`
+   - `README.md`
+3. Reemplaza los archivos anteriores.
+4. Haz **Commit changes**.
+5. Espera 1–3 minutos y abre el mismo enlace del sitio publicado.
