@@ -266,7 +266,7 @@ footer{text-align:center;padding:45px 20px 70px;color:var(--rose-dark)}footer p{
           <article class="info-card music-card">
             <span class="mini-title">Ambientación musical</span>
             <h2>Girls Just Want to Have Fun · Cyndi Lauper</h2>
-            <p>La canción queda integrada en la invitación. Toca una sola vez <strong>“Reproducir música”</strong> y sonará aquí mismo, sin tener que buscarla ni salir de la página.</p>
+            <p>La canción queda integrada en la invitación. <strong>Al tocar cualquier parte de la página por primera vez</strong>, la música comenzará a sonar aquí mismo, sin tener que buscarla ni salir de la página.</p>
             <div class="music-controls">
               <button class="music-btn music-toggle" id="musicToggle" type="button">▶ Reproducir música</button>
             </div>
@@ -278,7 +278,7 @@ footer{text-align:center;padding:45px 20px 70px;color:var(--rose-dark)}footer p{
                 allowfullscreen>
               </iframe>
             </div>
-            <p class="music-note">Por seguridad, los navegadores móviles requieren un toque antes de permitir audio con sonido.</p>
+            <p class="music-note">Por seguridad, los navegadores móviles requieren una primera interacción. Con tu primer toque en la invitación, la música se activará automáticamente.</p>
           </article>
         </div>
       </section>
@@ -327,10 +327,10 @@ footer{text-align:center;padding:45px 20px 70px;color:var(--rose-dark)}footer p{
           <p>Ayúdanos a organizar cada detalle confirmando por WhatsApp.</p>
           <p class="single-invite">Esta invitación es <strong>personal e individual</strong>.</p>
           <div class="whatsapp-group">
-            <a class="whatsapp-btn" target="_blank" rel="noopener" href="https://wa.me/50487940541?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%2050%20a%C3%B1os%20de%20Ingrid%20y%20Gloria%20Ch%C3%A1vez%20el%205%20de%20septiembre%20de%202026.%20Confirmo%20mi%20asistencia%20individual.%20Mi%20nombre%20es%3A%20">
+            <a class="whatsapp-btn" target="_blank" rel="noopener" href="https://wa.me/50487940541?text=Confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%2050%20a%C3%B1os%20de%20Ingrid%20y%20Gloria%20Ch%C3%A1vez%2C%20el%205%20de%20septiembre%20de%202026.%0A%0AInvitaci%C3%B3n%20personal%20para%201%20persona.%0ANombre%3A%20">
               Confirmar al +504 8794-0541
             </a>
-            <a class="whatsapp-btn secondary-whatsapp" target="_blank" rel="noopener" href="https://wa.me/50431598269?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%2050%20a%C3%B1os%20de%20Ingrid%20y%20Gloria%20Ch%C3%A1vez%20el%205%20de%20septiembre%20de%202026.%20Confirmo%20mi%20asistencia%20individual.%20Mi%20nombre%20es%3A%20">
+            <a class="whatsapp-btn secondary-whatsapp" target="_blank" rel="noopener" href="https://wa.me/50431598269?text=Confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%2050%20a%C3%B1os%20de%20Ingrid%20y%20Gloria%20Ch%C3%A1vez%2C%20el%205%20de%20septiembre%20de%202026.%0A%0AInvitaci%C3%B3n%20personal%20para%201%20persona.%0ANombre%3A%20">
               Confirmar al +504 3159-8269
             </a>
           </div>
@@ -345,7 +345,7 @@ footer{text-align:center;padding:45px 20px 70px;color:var(--rose-dark)}footer p{
     </footer>
   </div>
 
-  <a class="floating-whatsapp" target="_blank" rel="noopener" href="https://wa.me/50487940541?text=Hola%2C%20confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%2050%20a%C3%B1os%20de%20Ingrid%20y%20Gloria%20Ch%C3%A1vez%20el%205%20de%20septiembre%20de%202026.%20Confirmo%20mi%20asistencia%20individual.%20Mi%20nombre%20es%3A%20">WhatsApp</a>
+  <a class="floating-whatsapp" target="_blank" rel="noopener" href="https://wa.me/50487940541?text=Confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%2050%20a%C3%B1os%20de%20Ingrid%20y%20Gloria%20Ch%C3%A1vez%2C%20el%205%20de%20septiembre%20de%202026.%0A%0AInvitaci%C3%B3n%20personal%20para%201%20persona.%0ANombre%3A%20">WhatsApp</a>
 
   <script>
 const target = new Date('2026-09-05T16:00:00-06:00').getTime();
@@ -387,23 +387,54 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   if(!btn || !player || !frame) return;
 
+  function startMusic(scrollIntoView=false){
+    if(started) return;
+    frame.src = 'https://www.youtube.com/embed/PIb6AZdTr-A?autoplay=1&playsinline=1&rel=0';
+    player.hidden = false;
+    btn.textContent = '♫ Música reproduciéndose';
+    btn.classList.add('playing');
+    started = true;
+    if(scrollIntoView){
+      player.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    removeAutoStartListeners();
+  }
+
+  function stopMusic(){
+    frame.src = '';
+    player.hidden = true;
+    btn.textContent = '▶ Reproducir música';
+    btn.classList.remove('playing');
+    started = false;
+    addAutoStartListeners();
+  }
+
+  function autoStartHandler(event){
+    if(event.target.closest('#musicToggle')) return;
+    startMusic(false);
+  }
+
+  function addAutoStartListeners(){
+    document.addEventListener('pointerdown', autoStartHandler, {once:true});
+    document.addEventListener('touchstart', autoStartHandler, {once:true});
+    document.addEventListener('click', autoStartHandler, {once:true});
+  }
+
+  function removeAutoStartListeners(){
+    document.removeEventListener('pointerdown', autoStartHandler);
+    document.removeEventListener('touchstart', autoStartHandler);
+    document.removeEventListener('click', autoStartHandler);
+  }
+
   btn.addEventListener('click', function(){
     if(!started){
-      frame.src = 'https://www.youtube.com/embed/PIb6AZdTr-A?autoplay=1&playsinline=1&rel=0';
-      player.hidden = false;
-      btn.textContent = '♫ Música reproduciéndose';
-      btn.classList.add('playing');
-      started = true;
-      player.scrollIntoView({behavior:'smooth', block:'center'});
+      startMusic(true);
     }else{
-      // Stop and allow replay.
-      frame.src = '';
-      player.hidden = true;
-      btn.textContent = '▶ Reproducir música';
-      btn.classList.remove('playing');
-      started = false;
+      stopMusic();
     }
   });
+
+  addAutoStartListeners();
 })();
 </script>
 

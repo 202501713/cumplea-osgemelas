@@ -29,3 +29,15 @@ VERSIÓN 8
 
 VERSIÓN 9
 - Se agregaron etiquetas Open Graph y Twitter para que al compartir el link se muestre la foto principal como vista previa.
+
+
+VERSIÓN 10
+- Mensaje de WhatsApp restaurado a: Esta invitación es personal para 1 persona.
+
+
+VERSIÓN 11
+- Mensaje de WhatsApp actualizado al texto corto solicitado.
+
+
+VERSIÓN 12
+- La música se activa automáticamente con el primer toque en cualquier parte de la invitación.
